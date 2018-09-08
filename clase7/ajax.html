@@ -14,12 +14,16 @@
             <div class="col-md-6">
                 <h1>Perfil</h1>
                 <div id="renderajax">
-                    <img id="avatar" src="" alt="">
+                    <img class="rounded mx-auto d-block" width="50%" id="avatar" src="" alt="">
                     <h4 id="nombre"></h4>
                     <p id="bio"></p>
                 </div>
             </div>
-            <div class="col-md-6">Hola 2</div>
+            <div class="col-md-6">
+                <pre id="repositorios">
+
+                </pre>
+            </div>
         </div>
         <div class="row">
             <button onclick="getRequestGit()" type="button" class="btn btn-success">Traer datos</button>
@@ -29,6 +33,7 @@
     
     <script>
         var datosperfil={};
+        
         function getRequestGit(){
             var peticion  = new  XMLHttpRequest();
             peticion.onreadystatechange = function(){
@@ -39,11 +44,27 @@
                     var imagen=document.getElementById('avatar');
                     imagen.setAttribute('src',datosperfil.avatar_url)
                     console.log(datosperfil);
-                    //document.getElementById("renderajax").innerHTML = this.responseText;
+                    renderRepositorios(datosperfil.repos_url);
                 }
             }
             peticion.open('GET','https://api.github.com/users/carlosmolano',true);
             peticion.send();
+        }
+        document.addEventListener("DOMContentLoaded", function(event) {
+            console.log("pagina Cargada🤠");
+            getRequestGit();
+        });
+        function renderRepositorios(url){
+            var data = [];
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function(){
+                if(this.readyState==4 && this.status == 200){
+                    data = JSON.parse(this.responseText);
+                    document.getElementById('repositorios').innerHTML = this.responseText;
+                }
+            }
+            req.open('GET',url,true);
+            req.send();
         }
     </script>
 </body>
