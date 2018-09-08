@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo" >Futbolt Colombiano</h1>
+
+    <select name="" id="equipos">
+        <option value="nacional">Nacional</option>
+        <option value="america">America</option>
+        <option value="millonarios">Millonarios</option>
+        <option value="tolima">Tolima</option>
+        <option value="medellin">Medellin</option>
+        <option value="pasto">Pasto</option>
+    </select>
+    <h2 id="nombre">🍉</h2>
+    <div>
+        <img id="imgEquipo" src="" alt="">
+    </div>
+    
+    <script>
+        var dataEquipos=[
+            {
+                nombre: "Nacional",
+                urlimage: "",
+                dt: "Almidon",
+                jugadores: ["Totono","Macknely"],
+                resenia: "",
+                estadio: "",
+                estrellas: "",
+            },
+            {
+                nombre: "America",
+                urlimage: "",
+                dt: "nn",
+                jugadores: ["nn","nn"],
+                resenia: "",
+                estadio: "",
+                estrellas: "0",
+            }
+            ];
+
+        var imagenesEquipos = ["https://images-na.ssl-images-amazon.com/images/I/51-Ko9XffcL._SY355_.jpg",
+            "https://1.bp.blogspot.com/-XVFiNCk-s6A/WWHXERCjstI/AAAAAAABMLg/dP-Z8mSfG3IYm9Ay0dM4I4U34cOaDHCzwCLcBGAs/s1600/America%2Bde%2BCali.png",
+            "",
+            ];
+        var selEquipos = document.getElementById('equipos');
+        var nomEquipo = document.getElementById('nombre');
+        var imagenEquipo = document.getElementById('imgEquipo');
+        selEquipos.onchange = function(){
+            nomEquipo.innerHTML = this.options[this.selectedIndex].text;
+            imagenEquipo.setAttribute('src',imagenesEquipos[this.selectedIndex]);
+        }
+       dataEquipos.push({
+                nombre: "Tolima",
+                urlimage: "",
+                dt: "Patoloco",
+                jugadores: ["Chinin","Hasan"],
+                resenia: "",
+                estadio: "",
+                estrellas: "",
+            });
+        
+    </script>
+</body>
+</html>

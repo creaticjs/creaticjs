@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="cuerpo">
+    
+    <script>
+        
+        class Robot{
+            constructor(nombre, energia){
+                this.nombre = nombre
+                this.energia = energia
+            }
+            saludar(){
+                console.log(`Hola soy ${this.nombre}, el Robot mas guapo 😎`);
+            }
+        }
+
+        class Humanoide extends Robot{
+            constructor(nombre, energia, comida){
+                super(nombre, energia)
+                this.comida = comida
+            }
+            saludar(){
+                console.log(`Hola soy ${this.nombre} soy un medio humano 😎`);
+            }
+        }
+        var carlos = new Robot("Super Carlos",80);
+    </script>
+</body>
+</html>

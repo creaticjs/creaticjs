@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        select {
+            color: #ffffff;
+            background: linear-gradient(to right, #1C6EA4 0%, #2388CB 50%, #144E75 100%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Soy hincha</h1>
+    <p>Yo soy hincha de:</p>
+    
+    <p id="res">Resultado</p>
+    <select name="" id="equipos">
+        <option value="nacional">Nacional</option>
+        <option value="america">America</option>
+        <option value="millonarios">Millonarios</option>
+    </select>
+    <div>
+            <img id="imgequipo" src="" alt="">
+    </div>
+    
+
+
+    <script>
+        var arrUrls=[""];
+        var sel = document.getElementById('equipos');
+        var imge = document.getElementById('imgequipo');
+
+        sel.onchange = function(){
+            var l=document.getElementById('res')
+            l.innerHTML = this.options[this.selectedIndex].text;
+            imge.setAttribute('src','https://seeklogo.com/images/C/Club_Atl__tico_Nacional-logo-B34D1C41B9-seeklogo.com.png')
+        };
+    </script>
+    
+</body>
+</html>

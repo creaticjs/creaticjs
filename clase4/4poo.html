@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Robot{
+            constructor(nombre,  energia=10) {
+                this.nombre = nombre
+                this.energia = energia
+            }
+            saludar (){
+                console.log(`Hola 🤖, soy ${this.nombre}`);
+            }
+            estadoenergia(){
+                if(this.energia<=40){
+                return `${this.nombre} tu energia es baja`
+                }else{
+                    return `${this.nombre} tu energia esta normal`
+                }
+            }
+        }
+        
+        class Humanoide extends Robot{
+            constructor(nombre, energia){
+                super(nombre,energia)
+            }
+            saludar(){
+                console.log(`Hola 🤖, soy ${this.nombre} Humanoide`)
+            }
+        }
+
+        var veronica = new Robot('Veronica', 10)
+        var carlos = new Humanoide('Carlos A. Moplano', 100);
+    </script>
+</body>
+</html>

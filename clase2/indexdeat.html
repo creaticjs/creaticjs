@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clase 2</title>
+</head>
+<body>
+    <h1 >Ejemplo</h1>
+    <p id="par">Hola</p>
+    <script>
+        var palabras = ['javascript','visual','bananas'];
+
+        String.prototype.replaceAt=function(index, replacement) {
+            return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+        }
+    </script>
+</body>
+</html>

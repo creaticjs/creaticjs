@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="contenedor">
+        <p>Conenido</p>
+    </div>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Entrenador</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+
+        </tbody>
+    </table>
+    <script>
+    var equipos = [
+            {
+                nombre : "Nacional",
+                tecnico : "Almiron",
+                estrellas : 5},
+            {
+                nombre : "America",
+                tecnico : "Loco",
+                estrellas : 5},
+            {
+                nombre : "Tolima",
+                tecnico : "no se",
+                estrellas : 5,
+                
+            }];
+        var cont = document.getElementById('contenedor');
+        var auxE="";
+        equipos.forEach(function(item,index){
+            console.log(item);
+            auxE += "<p>"+item.nombre+"</p>"
+        });
+        cont.innerHTML = auxE;
+
+        //...
+        var cTable = document.getElementById('cuerpoTabla')
+        var auxT = "";
+        equipos.forEach(function(equipo,index){
+            auxT += "<tr><td>"+equipo.nombre+"</td><td>"+equipo.tecnico+"</td><tr>";
+        })
+        cTable.innerHTML = auxT;
+    </script>
+</body>
+</html>

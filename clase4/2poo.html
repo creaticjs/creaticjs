@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Poo 2</title>
+</head>
+<body>
+    <script>
+        function Robot(nombre, start=1, energia=10) {
+            this.nombre = nombre
+            this.start = start
+            this.energia = energia
+        }
+        Robot.prototype.saludar = function(){
+                console.log(`Hola 🤖, soy ${this.nombre}`);
+            }
+        Robot.prototype.estadoenergia = function(){
+            if(this.energia<=40){
+                return `${this.nombre} tu energia es baja`
+            }else{
+                return `${this.nombre} tu energia esta normal`
+            }
+        }
+        var arturito = new Robot();
+        arturito.nombre = "Arturito";
+    </script>
+</body>
+</html>
