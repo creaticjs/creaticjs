@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .panel1 {
+            background-color: aquamarine;
+            color: black;
+        }
+        .panel2 {
+            background-color: red;
+            color: white;
+        }
+        .resaltado{
+            background-color: blueviolet;
+            color: white;
+        }
+        #p1 {
+            border-radius: 10px;
+        }
+        #p2 {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery 🍉</h1>
+        <div class="row">
+                <input type="text" name="valor1">
+        </div>
+        <div class="row">
+                <input type="text" name="valor2">
+        </div>
+        <div class="row">
+            <button id="sum" class="btn btn-success"> Sumar</button>
+        </div>
+        <div class="row">
+                <label id="resultado" for=""></label>
+        </div>
+        
+    </div>
+    
+   <script src="/js/jquery-3.3.1.min.js"></script> 
+   <script>
+   $(function(){
+       $('#sum').on('click', function(){
+           sumar();
+       });
+   })
+   function sumar () { 
+       var val1= $("input[name='valor1']").val();
+       var val2= $("input[name='valor2']").val();
+       var c = parseFloat(val1)+parseFloat(val2);
+       $("#resultado").text(c);
+    }
+   </script>
+</body>
+</html>

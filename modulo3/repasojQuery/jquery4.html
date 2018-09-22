@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax</title>
+</head>
+<body>
+    <img id="avatar" src="" alt="">
+    <script src="/js/jquery-3.3.1.min.js"></script> 
+    <script>
+        $(function(){
+            getP('https://api.github.com/users/carlosmolano');
+        });
+        function getP (url) { 
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "json",
+            })
+            .done(function(response){
+                console.log(response);
+                $('#avatar').attr('src',response.avatar_url);
+            })
+            .fail(function(){
+
+            })
+            .always(function(){
+
+            });
+        }
+    </script>
+</body>
+</html>

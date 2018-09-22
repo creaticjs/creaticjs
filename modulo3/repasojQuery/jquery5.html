@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax</title>
+</head>
+<body>
+    <div id="contenedor">
+
+    </div>
+    <img id="avatar" src="" alt="">
+    <script src="/js/jquery-3.3.1.min.js"></script> 
+    <script>
+        $(function(){
+            getP('https://api.github.com/users/carlosmolano')
+            .then(function(user){
+                console.log(user.name);
+                $('#contenedor').append(`<img src='${user.avatar_url}'></img>`);
+                return getP('https://api.github.com/users/dancollager')
+            })
+            .then(function(data){
+                $('#contenedor').append(`<img src='${data.avatar_url}'></img>`);
+                console.log(data.name);
+                return getP('https://api.github.com/users/gmcruz123')
+            })
+            .then(function(usuario){
+                $('#contenedor').append(`<img src='${usuario.avatar_url}'></img>`);
+                console.log(usuario.name);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+        });
+        function getP (url) { 
+            return new Promise(function(resolve, reject){
+                $.ajax({
+                type: "get",
+                url: url,
+                dataType: "json",
+                })
+                .done(function(data){
+                    resolve(data);
+                })
+                .fail(function(){
+                    reject(Error('Error 🤮'));
+                })
+                .always(function(){
+                });
+            });
+        }
+    </script>
+</body>
+</html>
