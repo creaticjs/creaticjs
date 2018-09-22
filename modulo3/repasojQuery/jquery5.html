@@ -7,6 +7,7 @@
     <title>Ajax</title>
 </head>
 <body>
+    <h2>Patico</h2>
     <div id="contenedor">
 
     </div>
@@ -14,25 +15,43 @@
     <script src="/js/jquery-3.3.1.min.js"></script> 
     <script>
         $(function(){
+            $('#contenedor').on('click','h2 .bind',function(){
+                var ch2= $(this);
+                console.log(ch2.data(id));
+            })
             getP('https://api.github.com/users/carlosmolano')
             .then(function(user){
-                console.log(user.name);
-                $('#contenedor').append(`<img src='${user.avatar_url}'></img>`);
+                console.log(user);
+                $('#contenedor').append(`
+                    <h2 onclick='ids(${user.id})' data-id='${user.id}'>${user.name}</h2>
+                    <img src='${user.avatar_url}'></img>
+                `);
                 return getP('https://api.github.com/users/dancollager')
             })
             .then(function(data){
                 $('#contenedor').append(`<img src='${data.avatar_url}'></img>`);
-                console.log(data.name);
+                
+                $('#contenedor').append(`
+                    <h2 class='bind' data-id='${data.id}'>${data.name}</h2>
+                    <img src='${data.avatar_url}'></img>
+                `);
                 return getP('https://api.github.com/users/gmcruz123')
             })
             .then(function(usuario){
                 $('#contenedor').append(`<img src='${usuario.avatar_url}'></img>`);
                 console.log(usuario.name);
+                $('#contenedor').append(`
+                    <h2 class='bind' data-id='${usuario.id}'>${usuario.name}</h2>
+                    <img src='${usuario.avatar_url}'></img>
+                `);
             })
             .catch(function(err){
                 console.log(err);
             });
         });
+        function ids (id) {
+            console.log(id);
+          }
         function getP (url) { 
             return new Promise(function(resolve, reject){
                 $.ajax({
