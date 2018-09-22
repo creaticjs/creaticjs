@@ -28,29 +28,36 @@
         var user;
         console.log('Inicio');
         $(function(){
-          
+          peticion('https://pi.github.com/users/carlosmolano')
+          .then(function(data){
+              console.log(data)
+          })
+          .catch(function(err){
+              console.log(err)
+          })
            
         });
     
-        function peticion(){
-            $('#loading').show();
-            $.ajax({
+        function peticion(url, param){
+            return new Promise(function(resolve, reject){
+                $.ajax({
                 type: "get",
-                url: "https://api.github.com/users/carlosmolano",
+                url: url,
+                data: param,
                 dataType: "json",
-            })
-            .done(function(data){
-                console.log('Done')
-                console.log(data);
-                user = data;
-            })
-            .fail(function (){
-                console.log('Error')
-            })
-            .always(function(){
-                console.log('Always')
-                $('#loading').hide();
+                })
+                .done(function(data){
+                    resolve(data);
+                })
+                .fail(function (){
+                    reject("Error 🤮")
+                })
+                .always(function(){
+                    console.log('Always')
+                });
             });
+            
+            
         }
     </script>
 </body>
