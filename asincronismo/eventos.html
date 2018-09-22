@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Callback</title>
+</head>
+<body>
+    <div id="contenedor">
+
+    </div>
+    <div id="nombres">
+
+    </div>
+    <script>
+       
+        //https://api.github.com/users/cfordonez
+        //https://api.github.com/users/jairnet
+        //https://api.github.com/users/hyronhide
+        //https://api.github.com/users/jasa1704
+        //https://api.github.com/users/fraboto
+        function getP(url,callback){
+            
+                var httpX = new XMLHttpRequest();
+                httpX.onload = function(){
+                    //console.log(JSON.parse(this.responseText));
+                    if(callback){
+                        callback(JSON.parse(this.responseText));
+                    }
+                   
+                }
+                httpX.onerror = function(){
+                    reject(Error('Error 🤮'));
+                }
+                httpX.open('GET',url,true);
+                httpX.send()
+            
+        }
+        
+        var usuarios = []; //promesas 
+        var urls= ['https://api.github.com/users/carlosmolano',
+                'https://api.github.com/users/jairnet',
+                'https://api.github.com/users/hyronhide',
+                'https://api.github.com/users/jasa1704'];
+                
+    
+        function renderUsuarios(){
+            var cont = document.getElementById('contenedor');
+            cont.innerHTML = '';
+            var auxCont= '';
+            urls.forEach(function(url){
+                auxCont += `<button onclick="getP('${url}',renderNombres)"> Boton </button>`;
+            });
+            cont.innerHTML = auxCont;
+        }
+
+        function renderNombres(data){
+            console.log(data);
+            var nomb = document.getElementById('nombres');
+            //cont.innerHTML = '';
+            var auxCont= nomb.innerHTML;
+            auxCont += `<p>${data.name}</p>` 
+            nomb.innerHTML = auxCont;
+        }
+    </script>
+</body>
+</html>
