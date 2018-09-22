@@ -9,11 +9,11 @@
 <body>
     <h1>Callback 😎</h1>
     <script>
-        function getPeticion(url, calvo){
+        function getPeticion(url, cb){
             var httpR = new XMLHttpRequest();
             httpR.onreadystatechange = function(){
                 if(this.readyState==4&& this.status==200){
-                    calvo(JSON.parse(this.responseText));
+                    cb(JSON.parse(this.responseText));
                 }
             }
             httpR.open('GET',url,true);
