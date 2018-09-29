@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js"></script>
+    <script>
+        var dataset = [{id: 1, nombre: "Carlos Molano", edad : 36},
+                        {id: 2, nombre: "Juan Camilo", edad : 50},
+                        {id: 3, nombre: "Teresa Restrepo", edad : 20},
+                        {id: 4, nombre: "Lina Maria", edad : 20},
+                        {id: 5, nombre: "Tatiana de los Rios", edad : 20},
+                        {id: 6, nombre: "Carlos Andres Mota", edad : 51},
+                    ]
+            var busqueda = 'CAR'
+            var query = Enumerable.From(dataset)
+            .Where(`!!($.nombre).toUpperCase().match(/^${busqueda}/)`).ToArray();
+            
+    </script>
+</body>
+</html>
