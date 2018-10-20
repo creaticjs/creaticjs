@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Pet} from "../interfaces/pet";
+import {PetsService} from "../services/pets.service";
 
 @Component({
   selector: 'app-pets',
@@ -9,30 +10,10 @@ import {Pet} from "../interfaces/pet";
 export class PetsComponent implements OnInit {
 
   nombre = "Coby";
-  pets : Pet[];
+  petsC : Pet[];
   verMensaje = false;
-  constructor() {
-    let pet1: Pet = {
-      id: 1,
-      nombre: 'Coby',
-      tipo: 'perro'
-    };
-    let pet2: Pet = {
-      id: 2,
-      nombre: 'Toby',
-      tipo: 'conejo'
-    };
-    let pet3: Pet = {
-      id: 3,
-      nombre: 'Trosqui',
-      tipo: 'perro'
-    };
-    let pet4: Pet = {
-      id: 4,
-      nombre: 'Alvin',
-      tipo: 'gato'
-    };
-    this.pets = [pet1, pet2, pet3, pet4];
+  constructor(private petsService: PetsService) {
+    this.petsC = this.petsService.getPets();
   }
 
   ngOnInit() {
