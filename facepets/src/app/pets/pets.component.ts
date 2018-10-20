@@ -37,4 +37,8 @@ export class PetsComponent implements OnInit {
     }
     return '🤮';
   }
+
+  personajes() {
+    this.petsService.getPersonajes();
+  }
 }

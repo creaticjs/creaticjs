@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InicioComponent } from './inicio/inicio.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const rutas: Routes = [
   {path: '', component: LoginComponent},
@@ -29,7 +30,8 @@ const rutas: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

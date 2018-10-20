@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Pet} from "../interfaces/pet";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PetsService {
   pets : Pet[];
-  constructor() {
+  constructor(private peticion: HttpClient) {
     let pet1: Pet = {
       id: 1,
       nombre: 'Coby',
@@ -32,5 +33,11 @@ export class PetsService {
 
   getPets(){
     return this.pets;
+  }
+
+  getPersonajes(){
+    return this.peticion.get('https://swapi.co/api/people/').subscribe((data)=>{
+      console.log(data);
+    });
   }
 }
