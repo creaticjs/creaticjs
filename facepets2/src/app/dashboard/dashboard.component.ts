@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Pet} from '../interfaces/pet';
 import {PetsService} from '../services/pets.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +13,23 @@ export class DashboardComponent implements OnInit {
   action = 'list';
   pet: Pet = {nombre: '', tipo: ''};
   constructor(private servicioPets: PetsService) {
-    this.servicioPets.getPets().valueChanges().subscribe((data: Pet[]) => {
+    /*this.servicioPets.getPets().valueChanges().subscribe((data: Pet[]) => {
       console.log('Traer datos');
       console.log(data);
       this.pets = data;
     }, (error) => {
       console.log('🤮');
-    });
+    });*/
+    this.servicioPets.getPets().snapshotChanges().pipe(
+      map(
+        (changes => {
+          return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+        })
+      )).subscribe((data: any[]) => {
+        this.pets = data;
+      }
+
+    );
   }
 
   ngOnInit() {
@@ -43,6 +54,24 @@ export class DashboardComponent implements OnInit {
     this.servicioPets.savePet(this.pet).then((data) => {
       console.log('Mascota Creada');
       this.action = 'list';
+      this.pet = {nombre: '', tipo: ''};
+    });
+  }
+  changeAction(pet) {
+    console.log(pet);
+    this.action = 'update';
+    this.pet = pet;
+  }
+  actualizarMascota() {
+    this.servicioPets.updatePet(this.pet).then(() => {
+      console.log('Guardo los cambios');
+      this.pet = {nombre: '', tipo: ''};
+      this.action = 'list';
+    });
+  }
+  eliminarMascota(key) {
+    this.servicioPets.deletePet(key).then(() => {
+      console.log('Eliminado');
     });
   }
 }

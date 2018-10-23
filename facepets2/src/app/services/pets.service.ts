@@ -22,4 +22,10 @@ export class PetsService {
   savePet(pet: any) {
     return this.pets.push(pet);
   }
+  updatePet(pet: any) {
+    return this.pets.update(pet.key, pet);
+  }
+  deletePet(key) {
+    return this.pets.remove(key);
+  }
 }
