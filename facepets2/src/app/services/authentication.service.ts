@@ -21,4 +21,7 @@ export class AuthenticationService {
   getStatus() {
     return this.autService.authState;
   }
+  logout() {
+    return this.autService.auth.signOut();
+  }
 }

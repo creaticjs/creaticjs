@@ -14,12 +14,13 @@ import { environment } from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {FormsModule} from '@angular/forms';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AuthenticationGuard} from './services/authentication.guard';
 
-const rutas : Routes=[
+const rutas : Routes = [
   {path: '', component : InicioComponent},
   {path: 'inicio', component : InicioComponent},
   {path: 'login', component : LoginComponent},
-  {path: 'dashboard', component : DashboardComponent},
+  {path: 'dashboard', component : DashboardComponent, canActivate: [AuthenticationGuard]},
   {path: 'perfil', component : PerfilComponent},
   {path: 'pet', component : PetComponent},
   ];

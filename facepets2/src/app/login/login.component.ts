@@ -28,4 +28,8 @@ export class LoginComponent implements OnInit {
       console.log(error);
     } );
   }
+
+  getStatus() {
+    // this.autService.getStatus().
+  }
 }
