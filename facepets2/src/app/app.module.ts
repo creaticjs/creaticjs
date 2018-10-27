@@ -13,14 +13,15 @@ import {AngularFireModule} from '@angular/fire';
 import { environment } from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {FormsModule} from '@angular/forms';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 const rutas : Routes=[
-  {path:'', component : InicioComponent},
-  {path:'inicio', component : InicioComponent},
-  {path:'login', component : LoginComponent},
-  {path:'dashboard', component : DashboardComponent},
-  {path:'perfil', component : PerfilComponent},
-  {path:'pet', component : PetComponent},
+  {path: '', component : InicioComponent},
+  {path: 'inicio', component : InicioComponent},
+  {path: 'login', component : LoginComponent},
+  {path: 'dashboard', component : DashboardComponent},
+  {path: 'perfil', component : PerfilComponent},
+  {path: 'pet', component : PetComponent},
   ];
 
 @NgModule({
@@ -38,7 +39,8 @@ const rutas : Routes=[
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
