@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
   loginGoogle() {
     this.autService.loginGoogle().then((data) => {
       console.log(data);
-      this.routes.navigate(['dashboard']);
+      this.routes.navigate(['/dashboard']);
 
-      
+
     }).catch((error) => {
       console.log(error);
     } );
