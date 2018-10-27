@@ -21,8 +21,8 @@ const rutas : Routes = [
   {path: 'inicio', component : InicioComponent},
   {path: 'login', component : LoginComponent},
   {path: 'dashboard', component : DashboardComponent, canActivate: [AuthenticationGuard]},
-  {path: 'perfil', component : PerfilComponent},
-  {path: 'pet', component : PetComponent},
+  {path: 'perfil', component : PerfilComponent, canActivate: [AuthenticationGuard] },
+  {path: 'pet', component : PetComponent, canActivate: [AuthenticationGuard]},
   ];
 
 @NgModule({
