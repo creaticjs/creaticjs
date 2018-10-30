@@ -1,0 +1,15 @@
+{
+  "name": "nodejsclase1",
+  "version": "1.0.0",
+  "description": "Bootcamp creatic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "carlosantoniomolanosolarte@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "node-emoji": "^1.8.1"
+  }
+}
