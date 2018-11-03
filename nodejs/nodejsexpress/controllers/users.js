@@ -1,9 +1,13 @@
-const dbUsers = require('../db/db');
+//const dbUsers = require('../db/db');
+const db = require('../db/dbconnection');
 module.exports = {
    users: (req,res) => { //Get
-
-       res.send(dbUsers);
-       console.log('Hola Usuarios')
+        db.query('SELECT * from users',(error, results, fields)=>{
+            if(error){ 
+                res.send({error : "Ocurrio un error"});
+            }
+            res.send(results);
+        });
    },
    postUsers: (req, res) =>{
        console.log(req.body)
